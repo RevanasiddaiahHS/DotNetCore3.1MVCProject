@@ -1,0 +1,436 @@
+﻿@{}
+@*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" />*@
+
+<style>
+    @*@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");*@
+
+body {
+    background-color: #eee;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300
+}
+
+.card {
+    border: none
+}
+
+.ellipsis {
+    color: #a09c9c
+}
+
+hr {
+    color: #a09c9c;
+    margin-top: 4px;
+    margin-bottom: 8px
+}
+
+.muted-color {
+    color: #a09c9c;
+    font-size: 13px
+}
+
+.ellipsis i {
+    margin-top: 3px;
+    cursor: pointer
+}
+
+.icons i {
+    font-size: 25px
+}
+
+.icons .fa-heart {
+    color: red
+}
+
+.icons .fa-smile-o {
+    color: yellow;
+    font-size: 29px
+}
+
+.rounded-image {
+    border-radius: 50% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px
+}
+
+.name {
+    font-weight: 600
+}
+
+.comment-text {
+    font-size: 12px
+}
+
+.status small {
+    margin-right: 10px;
+    color: blue
+}
+
+.form-control {
+    border-radius: 26px
+}
+
+.comment-input {
+    position: relative
+}
+
+.fonts {
+    position: absolute;
+    right: 13px;
+    top: 8px;
+    color: #a09c9c
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #8bbafe;
+    outline: 0;
+    box-shadow: none
+}
+
+/*bootstrap css*/
+    .align-items-center {
+        align-items: center !important;
+    }
+
+    .justify-content-center {
+        justify-content: center !important;
+    }
+
+    .d-flex {
+        display: flex !important;
+    }
+
+    .row {
+        --bs-gutter-x: 1.5rem;
+        --bs-gutter-y: 0;
+        display: flex;
+        flex: 1 0 100%;
+        flex-wrap: wrap;
+        margin-top: calc(var(--bs-gutter-y) * -1);
+        margin-right: calc(var(--bs-gutter-x)/ -2);
+        margin-left: calc(var(--bs-gutter-x)/ -2);
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    user agent stylesheet
+    div {
+        display: block;
+    }
+
+    body {
+        background-color: #eee;
+        font-family: "Poppins", sans-serif;
+        font-weight: 300;
+    }
+    card {
+        border: none;
+    }
+
+    .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid rgba(0,0,0,.125);
+        border-radius: .25rem;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    user agent stylesheet
+    div {
+        display: block;
+    }
+
+    .row {
+        --bs-gutter-x: 1.5rem;
+        --bs-gutter-y: 0;
+        display: flex;
+        flex: 1 0 100%;
+        flex-wrap: wrap;
+        margin-top: calc(var(--bs-gutter-y) * -1);
+        margin-right: calc(var(--bs-gutter-x)/ -2);
+        margin-left: calc(var(--bs-gutter-x)/ -2);
+    }
+
+    body {
+        background-color: #eee;
+        font-family: "Poppins", sans-serif;
+        font-weight: 300;
+    }
+
+    body {
+        margin: 0;
+        font-family: var(--bs-font-sans-serif);
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        background-color: #fff;
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .px-3 {
+        padding-right: 1rem !important;
+        padding-left: 1rem !important;
+    }
+
+    .p-2 {
+        padding: .5rem !important;
+    }
+
+    .justify-content-between {
+        justify-content: space-between !important;
+    }
+
+    .d-flex {
+        display: flex !important;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    user agent stylesheet
+    div {
+        display: block;
+    }
+    .flex-row {
+        flex-direction: row !important;
+    }
+
+    .d-flex {
+        display: flex !important;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+    .ml-2 {
+        margin-left: .5rem !important;
+    }
+
+    .flex-column {
+        flex-direction: column !important;
+    }
+
+    .d-flex {
+        display: flex !important;
+    }
+    .font-weight-bold {
+        font-weight: 700 !important;
+    }
+    .ellipsis {
+        color: #a09c9c;
+    }
+
+    .mt-1 {
+        margin-top: .25rem !important;
+    }
+
+    .flex-row {
+        flex-direction: row !important;
+    }
+
+    .d-flex {
+        display: flex !important;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    user agent stylesheet
+    div {
+        display: block;
+    }
+    ellipsis i {
+        margin-top: 3px;
+        cursor: pointer;
+    }
+
+    .fa {
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    .p-2 {
+        padding: .5rem !important;
+    }
+    .align-items-center {
+        align-items: center !important;
+    }
+
+    .justify-content-between {
+        justify-content: space-between !important;
+    }
+
+    .d-flex {
+        display: flex !important;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    user agent stylesheet
+    div {
+        display: block;
+    }
+    align-items-center {
+        align-items: center !important;
+    }
+
+    .flex-row {
+        flex-direction: row !important;
+    }
+
+    .d-flex {
+        display: flex !important;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+    icons .fa-heart {
+        color: red;
+    }
+
+    .icons i {
+        font-size: 25px;
+    }
+    .icons .fa-smile-o {
+        color: yellow;
+        font-size: 29px;
+    }
+
+    .icons i {
+        font-size: 25px;
+    }
+
+    .ml-2 {
+        margin-left: .5rem !important;
+    }
+
+    .fa {
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    .muted-color {
+        color: #a09c9c;
+        font-size: 13px;
+    }
+
+    .flex-row {
+        flex-direction: row !important;
+    }
+
+    .d-flex {
+        display: flex !important;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    user agent stylesheet
+    div {
+        display: block;
+    }
+    .ml-2 {
+        margin-left: .5rem !important;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    .muted-color {
+        color: #a09c9c;
+        font-size: 13px;
+    }
+    
+</style>
+<div class="page-container">
+    <div class="page-content">
+        @*<div class="content-wrapper flow">
+        <div class=" mt-2 mb-2 ml-2 mr-2">
+            <div class="row d-flex align-items-center justify-content-center">*@
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="d-flex justify-content-between p-2 px-3">
+                    <div class="d-flex flex-row align-items-center">
+                        <img src="https://i.imgur.com/UXdKE3o.jpg" width="50" class="rounded-image">
+                        <div class="d-flex flex-column ml-2"> <span class="font-weight-bold">Jeanette Sun</span>  </div>
+                    </div>
+
+                    <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2">20 mins</small> <i class="fa fa-ellipsis-h"></i> </div>
+
+                </div>
+                <div class="row">
+                    <span class="text-primary pl-10">Collegues</span>
+
+                </div>
+                <img src="https://i.imgur.com/xhzhaGA.jpg" class="img-fluid">
+                <div class="p-2">
+                    <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                    <hr>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex flex-row icons d-flex align-items-center"> <div> <small>Like</small> <small>Reply</small> <small>Translate</small> <small>18 mins</small> </div></div>
+                        <div class="d-flex flex-row muted-color"> <span>2 comments</span> <span class="ml-2">Share</span> </div>
+                    </div>
+                    <hr>
+                    <div class="comments">
+                        <div class="d-flex flex-row mb-2">
+                            <img src="https://i.imgur.com/9AZ2QX1.jpg" width="40" class="rounded-image">
+                            <div class="d-flex flex-column ml-2">
+                                <span class="name">Daniel Frozer</span> <small class="comment-text">I like this alot! thanks alot</small>
+                                <div class="d-flex flex-row align-items-center status"></div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row mb-2">
+                            <img src="https://i.imgur.com/1YrCKa1.jpg" width="40" class="rounded-image">
+                            <div class="d-flex flex-column ml-2">
+                                <span class="name">Elizabeth goodmen</span> <small class="comment-text">Thanks for sharing!</small>
+                                <div class="d-flex flex-row align-items-center status"> </div>
+                            </div>
+                        </div>
+                        <div class="comment-input">
+                            <input type="text" class="form-control">
+                            <div class="fonts"> <i class="fa fa-camera"></i> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+    </div>
+
+@*<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>*@
+

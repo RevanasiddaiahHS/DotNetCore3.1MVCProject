@@ -1,0 +1,142 @@
+﻿@model CHANDsPAPERService.Models.TextContentSendModel
+
+@{
+    ViewData["Title"] = "Textsend";
+}
+@*<link rel="stylesheet" href="https://sedisav1.pplanr.com/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://sedisav1.pplanr.com/css/colors.min.css" />*@
+<style>
+    .note-btn {
+        width: 130px;
+    }
+</style>
+<div class="page-container">
+    <div class="page-content">
+        <div class="content-wrapper flow">
+            <div id="container">
+                <div class="panel panel-flat customPanel AddUpdateForm">
+                    <div class="panel-body ">
+                        <form asp-action="PostTexTemplate" asp-controller="Mentor" data-ajax-method="post" data-ajax="true" data-ajax-success="onsuccesspost" id="textcontentform">
+                            @Html.HiddenFor(Model => Model.textcontentid, new { @id = "hiddentextcontentid" })
+                            @Html.HiddenFor(Model => Model.textcontent, new { @id = "hiddentextcontent" })
+                            <div class="form-group">
+                                <label>
+                                    Post Title
+                                </label>
+                                @Html.TextBoxFor(Model => Model.TitleforTextContent, "", new { @id = "captiontextcontent", @class = "form-control", @autocomplete = "off" })
+                            </div>
+                            <div class="form-group">
+                                <label>Post Content</label>
+                                <div class="summernote templatedata" id="templatecontent">
+                                    @Html.Raw(ViewBag.templatecontent)
+                                </div>
+                                <span class="text-danger hide" id="summernoteerrormessage">Please enter the content to Post</span>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    Post caption
+                                </label>
+                                @Html.TextBoxFor(Model => Model.CaptionforTextContent, "", new { @id = "captiontextcontent", @class = "form-control", @autocomplete = "off" })
+                            </div>
+                         
+                            <div class="form-group text-right">
+                                <button type="submit" onclick="return ContentSubmit(event)" class="btn btn-success">Post<i class="icon-arrow-right14 position-right"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+
+    <script src="~/summernote/summernote.min.js"></script>
+    <script src="~/js/app.js"></script>
+    <script src="~/js/uniform.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.summernote').summernote();
+            $('.summernote-height').summernote({
+                height: 400
+            });
+
+            $('.summernote-height200').summernote({
+                height: 200
+            });
+            // Air mode
+            $('.summernote-airmode').summernote({
+                airMode: true
+            });
+
+
+
+            // Click to edit
+            // ------------------------------
+
+            // Edit
+            $('#edit').on('click', function () {
+                $('.click2edit').summernote({ focus: true });
+            })
+
+            // Save
+            $('#save').on('click', function () {
+                var aHTML = $('.click2edit').code(); //save HTML If you need(aHTML: array).
+                $('.click2edit').destroy();
+            })
+
+
+
+            // Related form components
+            // ------------------------------
+
+            // Styled checkboxes/radios
+            $(".link-dialog input[type=checkbox], .note-modal-form input[type=radio]").uniform({
+                radioClass: 'choice'
+            });
+
+
+            // Styled file input
+            $(".note-image-input").uniform({
+                fileButtonClass: 'action btn bg-warning-400'
+            });
+
+        });
+        function ContentSubmit(e) {
+            debugger
+            var templatecontent = $('.note-editable').html();
+            // const code = $('[name="content"]').summernote('code');
+            $('#hiddentextcontent').val(templatecontent);
+            return true;
+            //if (code !== '' && code !== '<p><br></p>') {
+            //   $('#hiddentextcontent').val(code);
+            // e.preventDefault();
+            //  return true;
+
+            //  }
+            // else {
+            // }
+
+        }
+        //$('.note-editable').on('keyup', function () {
+        //    alert();
+        //    $("#summernoteerrormessage").addClass('hide');
+        //})
+        function onsuccesspost(data) {
+            debugger
+            if (data == 0) {
+                $("#summernoteerrormessage").removeClass('hide')
+                setTimeout(function () {
+                    $("#summernoteerrormessage").addClass('hide')
+                }, 6000)
+            }
+            else {
+                window.location.href = "/Mentor/ContentPost";
+
+            }
+
+
+        }
+    </script>
+}

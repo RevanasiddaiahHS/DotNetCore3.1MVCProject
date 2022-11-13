@@ -1,0 +1,24 @@
+﻿@if (@ViewBag.val == null)
+{
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        <script>
+            ChandsLogout()
+            function ChandsLogout() {
+
+                $.ajax({
+                    type: "GET",
+                    url: "/Login/Logout",
+                    dataType: "JSON",
+                    success: function (response) {
+                        //window.history.go(-window.history.length);
+
+                        window.location.href = '/Login/Index';
+                    }
+                });
+            }
+
+
+        </script>
+    }
+}

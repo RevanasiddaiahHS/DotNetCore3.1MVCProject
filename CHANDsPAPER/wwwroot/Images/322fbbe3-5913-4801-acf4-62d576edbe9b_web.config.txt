@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <location path="." inheritInChildApplications="false">
+    <system.webServer>
+      <handlers>
+        <add name="aspNetCore" path="*" verb="*" modules="AspNetCoreModuleV2" resourceType="Unspecified" />
+      </handlers>
+      <aspNetCore processPath="dotnet" arguments=".\CHANDsPAPER.dll" stdoutLogEnabled="false" stdoutLogFile=".\logs\stdout" hostingModel="inprocess" />
+    </system.webServer>
+  </location>
+     <connectionStrings>
+       
+  <add key = "CHANDsPAPER" value="workstation id=ChandsPaperDB.mssql.somee.com;packet size=4096;user id=RevanaHiremath_SQLLogin_1;pwd=zspwxjtv1a;data source=ChandsPaperDB.mssql.somee.com;persist security info=False;initial catalog=ChandsPaperDB"  providerName="System.Data.SqlClient"/>
+     </connectionStrings>
+<appSettings>
+    <add key = "FromAddress" value="CHAND's PAPER"/>
+    <add key = "DefaultIPHostUserName" value="revanasiddaiah22@gmail.com"/>
+    <add key = "DefaultIPHost" value="smtp.gmail.com"/>
+    <add key = "DefaultIPPort" value="587"/>
+    <add key = "DefaultIPHostPassword" value="revanasiddaiah026@gmail.com"/>
+    <add key = "DefaultEnableSSL" value="true"/>
+    <add key = "Sandbox" value="true"/>
+</appSettings>
+</configuration>
+<!--ProjectGuid: 3ec19452-8217-47dc-8eaa-a7a03c9eecdf-->

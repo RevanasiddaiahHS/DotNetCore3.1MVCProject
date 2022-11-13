@@ -1,0 +1,24 @@
+<video class="video" poster="" autoplay="" loop="loop" playsinline="" muted="">
+<source src="https://manerodigitalv1.pplanr.com/images/MANERO_00_7_OK.mp4" type="video/mp4" />
+</video>
+
+<video allowfullscreen="allowfullscreen" poster="" autoplay="" loop="loop" playsinline="" muted="" controls="controls" class="video" style="box-sizing: border-box;"><source src="https://manerodigitalv1.pplanr.com/images/MANERO_00_7_OK.mp4" type="video/mp4" style="box-sizing: border-box;">
+</video>
+
+
+src="<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;100&quot; viewBox=&quot;0 0 24 24&quot; style=&quot;fill: rgba(0,0,0,0.15); transform: scale(0.75)&quot;>
+        <path d=&quot;M8.5 13.5l2.5 3 3.5-4.5 4.5 6H5m16 1V5a2 2 0 0 0-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2z&quot;></path>
+      </svg>" 
+
+
+<video allowfullscreen="allowfullscreen" poster="" autoplay loop="loop" playsinline="" muted controls="controls" class="video" style="box-sizing: border-box;"><source
+ src="https://manerodigitalv1.pplanr.com/images/MANERO_00_7_OK.mp4" type="video/mp4" style="box-sizing: border-box;"></video>
+
+<video allowfullscreen="allowfullscreen" poster="" autoplay loop="loop" playsinline="" muted controls="controls" class="video" src="<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;100&quot; viewBox=&quot;0 0 24 24&quot; style=&quot;fill: rgba(0,0,0,0.15); transform: scale(0.75)&quot;>
+        <path d=&quot;M8.5 13.5l2.5 3 3.5-4.5 4.5 6H5m16 1V5a2 2 0 0 0-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2z&quot;></path>
+      </svg>" style="box-sizing: border-box;"><source src="https://manerodigitalv1.pplanr.com/images/MANERO_00_7_OK.mp4" type="video/mp4" style="box-sizing: border-box;">
+</video>
+
+
+
+"<div></div><span></span><video allowfullscreen="allowfullscreen" poster="" autoplay loop="loop" playsinline="" muted controls="controls" class="video" src="<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;100&quot; viewBox=&quot;0 0 24 24&quot; style=&quot;fill: rgba(0,0,0,0.15); transform: scale(0.75)&quot;>        <path d=& quot; M8.5 13.5l2.5 3 3.5 - 4.5 4.5 6H5m16 1V5a2 2 0 0 0 - 2 - 2H5c - 1.1 0 - 2 .9 - 2 2v14c0 1.1.9 2 2 2h14c1.1 0 2 - .9 2 - 2z & quot;></path >      </svg > " style="box - sizing: border - box; "><source src="https://manerodigitalv1.pplanr.com/images/MANERO_00_7_OK.mp4" type="video/mp4" style="box-sizing: border-box;"></video><p></p><video allowfullscreen="allowfullscreen" poster="" autoplay loop="loop" playsinline="" muted controls="controls" class="video" src="<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;100&quot; viewBox=&quot;0 0 24 24&quot; style=&quot;fill: rgba(0,0,0,0.15); transform: scale(0.75)&quot;>        <path d=& quot; M8.5 13.5l2.5 3 3.5 - 4.5 4.5 6H5m16 1V5a2 2 0 0 0 - 2 - 2H5c - 1.1 0 - 2 .9 - 2 2v14c0 1.1.9 2 2 2h14c1.1 0 2 - .9 2 - 2z & quot;></path >      </svg > " style="box - sizing: border - box; "><source src="https://manerodigitalv1.pplanr.com/images/MANERO_00_7_OK.mp4" type="video/mp4" style="box-sizing: border-box;"></video>"

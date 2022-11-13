@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CHANDsPAPER</title>
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+    @*<link rel="stylesheet" href="~/css/site.css" />*@
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" />
+    <link href="~/css/icons/icomoon/styles.css" rel="stylesheet" />
+    <link href="~/css/Bootstrap.css" rel="stylesheet" />
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />*@
+
+    <link href="~/css/Custom.css" rel="stylesheet" asp-append-version="true" />
+    @*<link href="~/js/LoginPagestyjs/daterange.css" rel="stylesheet" />*@
+
+</head>
+<body>
+
+    @*<button onclick="ChandsLogout()" class="btn btn-primary">Logout</button>*@
+    @*<header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CHANDsPAPER</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>*@
+    <div class="page-header page-header-inverse">
+        <div class="navbar navbar-inverse navbar-transparent">
+            <div class="navbar-header">
+
+                <a class="navbar-brand" asp-action="Index" asp-controller="Home">
+                    @*<img src="~/images/brand.png" alt="">*@
+                </a>
+
+                <ul class="nav navbar-nav pull-right visible-xs-block">
+                    <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-grid3"></i></a></li>
+                </ul>
+            </div>
+
+            <div class="navbar-collapse collapse" id="navbar-mobile">
+
+                <p class="navbar-text no-padding-left"><span class="label bg-orange">CHANDs</span></p>
+
+                <ul class="nav navbar-nav navbar-nav-material no-margin-left">
+
+                    @*<li><a asp-action="Index" asp-controller="UserOrders"><i class="icon-clipboard3 mr-10"></i>Orders</a></li>
+        <li><a asp-action="PaymentHistory" asp-controller="UserOrders"><i class="icon-file-text2 mr-10"></i>Payment History</a></li>*@
+
+                    <li><a asp-action="Index" asp-controller="Home"><i class="icon-stats-growth mr-10"></i>Dashboard</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown"><i class="icon-files-empty mr-10"></i>Files<span class="caret"></span></a>
+                        <ul class="dropdown-menu dropdown-menu">
+                            <li><a asp-action="FetchLiveimageswithattributes" asp-controller="Admin">Posted Files</a></li>
+                            <li><a asp-action="LocalFiles" asp-controller="Mentor">Local Files</a></li>
+                            <li><a asp-action="AddFiles" asp-controller="Mentor">Add New File</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown"><i class="icon-images3 mr-10"></i>Images<span class="caret"></span></a>
+                        <ul class="dropdown-menu dropdown-menu">
+                            <li><a asp-action="FetchLiveimageswithattributes" asp-controller="Admin">Posted Images</a></li>
+                            <li><a asp-action="LocalImages" asp-controller="Mentor">Local Images</a></li>
+                            <li><a asp-action="AddImages" asp-controller="Mentor">Add New Image</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown"><i class="icon-file-video2 mr-10"></i>Videos<span class="caret"></span></a>
+                        <ul class="dropdown-menu dropdown-menu">
+                            <li><a asp-action="" asp-controller="Admin">Posted Videos</a></li>
+                            <li><a asp-action="LocalVideos" asp-controller="Mentor">Local Videos</a></li>
+                            <li><a asp-action="AddVideos" asp-controller="Mentor">Add New Video</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown"><i class="icon-file-music2 mr-10"></i>Audios<span class="caret"></span></a>
+                        <ul class="dropdown-menu dropdown-menu">
+                            <li><a asp-action="" asp-controller="Admin">Posted Audios</a></li>
+                            <li><a asp-action="LocalAudios" asp-controller="Mentor">Local Audios</a></li>
+                            <li><a asp-action="AddAudio" asp-controller="Mentor">Add New Audios</a></li>
+                        </ul>
+                    </li>
+                    <li><a asp-action="ContentPost" asp-controller="Mentor"><i class="icon-file-text mr-10"></i>Post Content</a></li>
+                    @*<li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown"><i class="icon-images3 mr-10"></i>Text<span class="caret"></span></a>
+            <ul class="dropdown-menu dropdown-menu">
+                <li><a asp-action="FetchLiveimageswithattributes" asp-controller="Admin">Live Text</a></li>
+                <li><a asp-action="LocalImages" asp-controller="Mentor">Local Text</a></li>
+                <li><a asp-action="AddImages" asp-controller="Mentor">Add New Video</a></li>
+            </ul>
+        </li>*@
+                    @*<li><a asp-action="Index" asp-controller="Funnels"><i class=" icon-tree7 mr-10"></i>Funnels</a></li>
+        <li><a asp-action="Index" asp-controller="Product"><i class="icon-box mr-10"></i>Products</a></li>
+        <li><a asp-action="Index" asp-controller="Order"><i class="icon-clipboard3 mr-10"></i>Orders</a></li>
+        <li><a asp-action="Index" asp-controller="Customer"><i class="icon-users4 mr-10"></i>Customers</a></li>*@
+
+
+                    @*<li><a href="javascript:void(0)" class="" onclick="DefaultSubscription();"><i class="icon-vcard mr-10"></i>Reports</a></li>
+
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-file-stats mr-10"></i>Reports<span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu">
+                <li><a asp-action="SalesByProduct" asp-controller="Reports">Sales By Product</a></li>
+                <li><a asp-action="OrderHistory" asp-controller="Reports">Order History</a></li>
+                <li><a asp-action="CustomerHistory" asp-controller="Reports">Customer History</a></li>
+
+            </ul>
+        </li>*@
+
+                </ul>
+
+                <div class="navbar-right">
+                    <ul class="nav navbar-nav">
+
+                        <li class="dropdown dropdown-user">
+                            <a class="dropdown-toggle" data-toggle="dropdown">
+                                @*@if (!string.IsNullOrEmpty(@Imagepath))
+                                    {
+                                        <img src="@Imagepath" />
+                                    }
+                                    else
+                                    {*@
+                                <div class="btn bg-info btn-rounded btn-icon mr-5">
+                                    <span class="letter-icon">U</span>
+                                </div>
+                                @*}*@
+                                <span>username</span>
+                                <i class="caret"></i>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a asp-action="Profile" asp-controller="Setting"><i class="icon-user-plus"></i>My profile</a></li>
+                                <li><a asp-action="UserManagement" asp-controller="Setting"><i class="icon-cog5"></i>Settings</a></li>
+                                <li><a href="javascript:void(0);" onclick="ChandsLogout();"><i class="icon-switch2"></i>Logout</a></li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    @*<footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2021 - CHANDsPAPER - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>*@
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>*@
+    <script src="~/js/Jquery.latest.min.js"></script>
+    @*<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>*@
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/alert/Sweetalert.js"></script>
+    <script src="~/js/unobstrusive-ajax.js"></script>
+    <script src="~/js/Custom.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/Datatable/select2.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,665 @@
+﻿@model CHANDsPAPERService.Models.HomeModel
+
+@{
+    ViewData["Title"] = "AddFiles";
+}
+
+
+<style>
+    body {
+        background: #0CE9AF;
+        display: flex;
+        flex-direction: column;
+        font-family: Lato;
+        height: 100%;
+        margin: auto;
+        text-shadow: 0 0px 2px rgba(245, 245, 245, .25);
+    }
+
+    #container {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, .75);
+        margin: auto;
+        width: auto;
+    }
+
+    .box-input {
+        text-align: center;
+    }
+
+        .box-input svg {
+            width: 5rem;
+            height: 5rem;
+            vertical-align: middle;
+            fill: currentColor;
+        }
+
+    form {
+        color: #fff;
+    }
+
+    input[type="button" i],
+    input[type="file" i]::-webkit-file-upload-button {
+        display: none !important;
+    }
+
+    .box.has-advanced-upload {
+        transition: all .15s ease-in-out, background-color .15s linear;
+    }
+
+    .box {
+        font-size: 1.25rem;
+        background-color: rgba(0, 142, 198, 1);
+        border: 4px solid #fff;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, .75);
+        padding: 5rem 8rem;
+        width: 100%;
+    }
+
+    .js .box-file {
+        width: .1px;
+        height: .1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+    }
+
+    .box-input label {
+        margin: auto;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: #fff;
+        cursor: pointer;
+        text-align: center;
+        display: block;
+        overflow: hidden;
+    }
+
+    .js .box-file + label * {
+        pointer-events: none;
+    }
+
+    .js .box-file:focus + label {
+        outline: 1px dotted #000;
+        outline: -webkit-focus-ring-color auto 5px;
+    }
+
+    button {
+        background: #0CE9AF;
+        border: none;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
+        color: #fff;
+        display: flex;
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin: auto;
+        margin-top: 2.5rem;
+        overflow: auto;
+        padding: 1rem 1.5rem;
+    }
+
+        button:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .5);
+        }
+
+        button:active {
+            box-shadow: none;
+        }
+
+    .box-uploading {
+        font-style: italic;
+    }
+
+    .box-success {
+        transition: appear-from-inside .25s ease-in-out;
+    }
+
+    .box__success {
+        animation: appear-from-inside .25s ease-in-out;
+    }
+
+
+
+    .box-restart {
+        font-weight: 700;
+    }
+
+    input,
+    textarea,
+    select {
+        border-radius: 0;
+        border: none;
+    }
+
+    input {
+        line-height: normal;
+    }
+
+    .box-dragndrop,
+    .box-icon,
+    .box-uploading,
+    .box-success,
+    .box-error {
+        display: none;
+    }
+
+    .box.has-advanced-upload .box-dragndrop {
+        display: inline;
+    }
+
+    strong {
+        color: #fff;
+    }
+
+    svg {
+        display: inline;
+    }
+
+    input[type="file"] {
+        display: none;
+        margin-left: 140px;
+    }
+</style>
+
+@if (@ViewBag.fileaddedmessage != null)
+{
+    <div class="positionfix">
+        <div class="alert alert-success alert-styled-left alert-arrow-left alert-bordered" id="divsuccessmessageaddfiles">
+            @ViewBag.fileaddedmessage
+            <button type="button" class="close"><span>×</span><span class="sr-only">Close</span></button>
+
+        </div>
+    </div>
+
+
+}
+@*<div class="page-container salesbyproduct">
+        <div class="page-content">
+            <div class="content-wrapper flow">
+                <form asp-action="Uploadfiles" asp-controller="Home" method="post" enctype="multipart/form-data">
+                    @Html.HiddenFor(Model => Model.MentorID, new { @id = "hiddenmentorid" })
+                    <div class="form-group col-lg-6">
+                        <label class="control-label">Profile Picture</label>
+                        <div class="custom-file">
+                            @Html.TextBoxFor(Model => Model.UploadFIle, "", new { @class = "form-control custom-file-input", @type = "file" })
+                            <label class="custom-file-label">Choose File...</label>
+                        </div>
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+
+            </div>
+        </div>
+    </div>*@
+
+
+
+
+    <div class="page-container salesbyproduct">
+        <div class="page-content">
+            <div class="content-wrapper flow">
+                <div id="container">
+
+                <form asp-action="Uploadfiles" asp-controller="Mentor" method="post" class="box has-advanced-upload" enctype="multipart/form-data" id="fileuploadform">
+                    <div class="box-input">
+                        <svg x="0px" y="0px" viewBox="0 0 64 62" style="enable-background:new 0 0 64 62;" xml:space="preserve">
+                        <style type="text/css">
+                            .st0 {
+                                fill: none;
+                                stroke: #fff;
+                                stroke-width: 2;
+                                stroke-linecap: round;
+                                stroke-linejoin: round;
+                                stroke-miterlimit: 10;
+                            }
+</style>
+                        <g id="spa-launch">
+                        <path class="st0" d="M33,27.1h-8c0,0-2-6-2-12c0-8,6-14,6-14s6,6,6,14C35,21.1,33,27.1,33,27.1z" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <line class="st0" x1="29" y1="17.1" x2="29" y2="27.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <polyline class="st0" points="25,27.1 17,27.1 17,23.1 23.1,17.1 	" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+                        <polyline class="st0" points="33,27.1 41,27.1 41,23.1 34.9,17.1 	" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+                        <path class="st0" d="M18,41.2c0.5-5.7,5.2-10.1,11-10.1c5.1,0,9.3,3.4,10.6,8.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+                        <path class="st0" d="M48,41.1c-0.2-3.4-3.1-6-6.5-6c-1.2,0-2.4,0.3-3.3,0.9" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+                        <path class="st0" d="M42.3,47.1c0,0-1-4-6-4" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+                        <path class="st0" d="M26.3,43.1c-3-1-4,2-4,2s-3-2-5,0s-1,4-1,4" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+                        <path class="st0" d="M9,46.1c-0.8-0.6-1.9-1-3-1c-2.8,0-5,2.2-5,5s2.2,5,5,5h46c2.8,0,5-2.2,5-5c0-5-4-9-9-9
+            c-0.9,0-1.8,0.1-2.6,0.4" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+                        <path class="st0" d="M18.8,37.9c-1.1-0.5-2.4-0.8-3.8-0.8c-4.6,0-8.5,3.5-8.9,8" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+    </g>
+    </svg>
+                        <div>
+
+                            @Html.HiddenFor(Model => Model.MentorID, new { @id = "hiddenmentorid" })
+                            @Html.HiddenFor(Model => Model.filetype, new { @id = "hdnfiletype" })
+                            @Html.TextBoxFor(Model => Model.UploadFIle, "", new { @class = "custom-file-input", @type = "file", @id = "textforlabel" })
+                            @Html.ValidationMessageFor(Model => Model.UploadFIle, "", new { @class = "text-danger" })
+                            <label for="textforlabel" id="choosetext">
+                                <strong>Choose a file</strong>
+                            </label>  
+                            <label id="">
+                                <strong>Accepted formats {txt,doc,docx,pdf,xls,xlsx}</strong>
+                            </label>
+
+                        </div>
+                        <button type="button" id="uploadimage">Upload</button>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+@*<div class="page-container salesbyproduct">
+        <div class="page-content">
+            <div class="content-wrapper flow">
+                <div id="container">
+                    <form asp-action="Uploadfiles" asp-controller="Home" method="post" enctype="multipart/form-data">
+                        @Html.HiddenFor(Model => Model.MentorID, new { @id = "hiddenmentorid" })
+                        <div class="form-group col-lg-6">
+                            <label class="control-label">Profile Picture</label>
+                            <div class="custom-file">
+                                @Html.TextBoxFor(Model => Model.UploadFIle, "", new { @class = "form-control custom-file-input", @type = "file" })
+                                <label class="custom-file-label">Choose File...</label>
+                            </div>
+                        </div>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>*@
+@section Scripts {
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.custom-file-input').on("change", function () {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).next('.custom-file-label').html(fileName);
+                if (fileName != "") {
+                    $("#choosetext").html(fileName);
+                }
+                else {
+                    $("#choosetext").html("Choose a file");
+                }
+            });
+
+            setTimeout(function () {
+                $("#divsuccessmessageaddfiles").addClass('hide')
+            }, 6000)
+            $(".alert .close").on('click', function () {
+                $(this).parent('.alert').addClass('hide');
+            })
+        })
+
+        $("#uploadimage").on('click', function () {
+            var ext = "";
+            if ($("#textforlabel").val() != "") {
+                ext = $("#textforlabel").val().split('.').pop();
+            }
+            var supportedTypes = ["txt", "doc", "docx", "pdf", "xls", "xlsx" ];  
+            if ($("#textforlabel").val() == "") {
+                alert("Please choose a file to upload");
+            }
+            else if (!supportedTypes.includes(ext.toLowerCase()))
+            {
+                alert("Please choos a file within specified formats");
+                $("#textforlabel").val("");
+                $("#choosetext").html("Choose a file");
+            }
+            else {
+                $("#fileuploadform").submit();
+            }
+
+        });
+                    //    debugger
+                    //    var filename = $("#textforlabel").val();
+                    //    var mentorid = $("#hiddenmentorid").val();
+                    //    var formdata = new FormData()
+                    //    formdata.append("UploadFIle", filename)
+                    //    formdata.append("MentorID", mentorid)
+                    //    $.ajax({
+                    //        type: "POST",
+                    //        url: "/Mentor/Uploadfiles",
+                    //        dataType: "json",
+                    //        data: formdata,
+                    //        cache: false,
+                    //        contentType: false,
+                    //        processData: false,
+                    //        success: function (response) {
+                    //            $('.pLoader').fadeOut("slow");
+                    //            window.location.reload();
+                    //        }
+                    //    });
+
+                    //})
+    </script>
+}

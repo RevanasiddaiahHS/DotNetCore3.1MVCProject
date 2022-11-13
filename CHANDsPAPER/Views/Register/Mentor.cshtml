@@ -1,0 +1,142 @@
+﻿@model CHANDsPAPERService.Models.RegisterModel
+
+@{
+    ViewData["Title"] = "Mentor Registration";
+    Layout = null;
+}
+<style>
+
+    #buttonposition {
+        padding-left: 15px;
+        padding-right: 44px;
+    }
+</style>
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+<link href="~/css/Custom.css" rel="stylesheet" />
+<div class="container">
+    <h4 style="margin-left:15px;">Mentor Registration</h4>
+    <main role="main" class="pb-3">
+
+        <div class="row" id="mentorregistartioform">
+
+            <form asp-action="MentorRegistration" asp-controller="Register" data-ajax="true" data-ajax-success="onsuccess" data-ajax-method="post" method="post" enctype="multipart/form-data" class="col-lg-12">
+                @*<input type="hidden" asp-for="Subject" id="Subjecthidden" />*@
+                <div class="col-lg-12 row">
+                    <div class="form-group col-sm-6">
+                        <label class="control-label">First Name</label>
+                        @*<input asp-for="FirstName" class="form-control" autocomplete="off" required autofocus />*@
+                        @Html.TextBoxFor(Model => Model.FirstName, "", new { @class = "form-control requiredInput", @id = "firstname", @autocomplete = "off" })
+                        @Html.ValidationMessageFor(Model => Model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label class="control-label">Last Name</label>
+                        @Html.TextBoxFor(Model => Model.LastName, "", new { @class = "form-control", @autocomplete = "off" })
+                    </div>
+                </div>
+                <div class="col-lg-12 row">
+                    <div class="form-group col-lg-6">
+                        <label class="control-label">Email</label>
+                        @*<input asp-for="EmailID" id="emailid" class="form-control" onchange="emailexistscheck()" autocomplete="off" required />*@
+                        @Html.TextBoxFor(Model => Model.EmailID, "", new { @class = "form-control requiredInput", @id = "emailidtxt", @autocomplete = "off" })
+                        @Html.ValidationMessageFor(Model => Model.EmailID, "", new { @class = "text-danger", @id = "emailvalidmessage" })
+
+                        @*<span asp-validation-for="EmailID" id="emailvalidmessage" class="text-danger"></span>*@
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label class="control-label">Mobile Number</label>
+                        @Html.TextBoxFor(Model => Model.MobileNumber, "", new { @class = "form-control requiredInput", @autocomplete = "off", @maxlength = "10", @onkeypress = "return isNumberKey(event)" })
+                        @Html.ValidationMessageFor(Model => Model.MobileNumber, "", new { @class = "text-danger" })
+
+                    </div>
+
+                </div>
+                <div class="col-lg-12 row">
+                    <div class="form-group col-lg-6">
+                        <label class="control-label">Password</label>
+                        @Html.PasswordFor(Model => Model.Password, new { @class = "form-control requiredInput", @autocomplete = "off" })
+                        @Html.ValidationMessageFor(Model => Model.Password, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label class="control-label">Confirm Password</label>
+                        @Html.PasswordFor(Model => Model.Confirmpassword, new { @class = "form-control requiredInput", @autocomplete = "off" })
+                        @Html.ValidationMessageFor(Model => Model.Confirmpassword, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+                <div class="col-lg-12 row">
+                    <div class="form-group col-lg-6">
+                        <label class="control-label">Gender</label><br />
+                        @Html.RadioButtonFor(Model => Model.Gender, "Male", new { @id = "Male" }) <label for="Male">Male</label><br />
+                        @Html.RadioButtonFor(Model => Model.Gender, "Female", new { @id = "Female" }) <label for="Female">Female</label><br />
+                        @Html.RadioButtonFor(Model => Model.Gender, "Others", new { @id = "Others" }) <label for="Others">Others</label>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label class="control-label">Profile Picture</label>
+                        <div class="custom-file">
+                            @Html.TextBoxFor(Model => Model.Photo, "", new { @class = "form-control custom-file-input", @type = "file" })
+                            @*<input asp-for=Photo"" class="form-control custom-file-input">*@
+                            <label class="custom-file-label">Choose File...</label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group text-right" id="buttonposition">
+                    <button type="button" value="Back" onclick="backtoregister()" class="btn btn-default pull-left">Back</button>
+
+                    <button type="submit" value="Submit" @*onclick="return formsubmit()"*@ class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div id="registrtionmessage" class="hide">
+            <h3>Email verification link sent to your email!, please verify your email to continue</h3>
+        </div>
+    </main>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/js/unobstrusive-ajax.js"></script>
+<script>
+
+
+    function isNumberKey(evt) {
+
+        var charCode = (evt.which) ? evt.which : evt.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    }
+    $('.custom-file-input').on("change", function () {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).next('.custom-file-label').html(fileName);
+    });
+    function onsuccess(data) {
+       
+        if (data == -1) {
+            $("#emailvalidmessage").text("Email already exists, please try with different email");
+        }
+        else {
+            $("#mentorregistartioform").addClass('hide');
+            $("#registrtionmessage").removeClass('hide');
+
+        }
+    }
+    $("#emailidtxt").on('click', function () {
+        if ($("#emailvalidmessage").text() == "Email already exists, please try with different email") {
+            $("#emailvalidmessage").text("");
+        }
+    })
+
+    function backtoregister() {
+        window.location.href = "/Login/Index"
+    }
+    $(document).ready(function () {
+        $("#firstname").focus();
+    })
+</script>
+

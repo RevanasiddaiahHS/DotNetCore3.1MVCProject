@@ -1,0 +1,763 @@
+﻿@model CHANDsPAPERService.Models.HomeModel
+@{
+    ViewData["Title"] = "AddImages";
+}
+@*@{
+        Layout = null;
+    }*@
+@*<link rel="stylesheet" asp-append-version="true" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />*@
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+@*<style rel="stylesheet" href=""></style>
+    <style rel="stylesheet" href=""></style>*@
+
+<style>
+
+    /*Taking from notused botstrap plugin*/
+
+    .pb-4, .py-4 {
+        padding-bottom: 1.5rem !important;
+    }
+
+    .pt-4, .py-4 {
+        padding-top: 1.5rem !important;
+    }
+
+    .row {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    user agent stylesheet
+    div {
+        display: block;
+    }
+
+    body {
+        margin: 0;
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+        background-color: #fff;
+    }
+
+    div {
+        display: block;
+    }
+
+    body {
+        margin: 0;
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+        background-color: #fff;
+    }
+
+    .pl-2, .px-2 {
+        padding-left: .5rem !important;
+    }
+
+    .pb-2, .py-2 {
+        padding-bottom: .5rem !important;
+    }
+
+    .pr-2, .px-2 {
+        padding-right: .5rem !important;
+    }
+
+    .pt-2, .py-2 {
+        padding-top: .5rem !important;
+    }
+
+    .mb-3, .my-3 {
+        margin-bottom: 1rem !important;
+    }
+
+    .shadow-sm {
+        box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important;
+    }
+
+    .rounded-pill {
+        border-radius: 50rem !important;
+    }
+
+    .bg-white {
+        background-color: #fff !important;
+    }
+
+    .input-group {
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -ms-flex-align: stretch;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    user agent stylesheet
+    div {
+        display: block;
+    }
+
+    body {
+        margin: 0;
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+        background-color: #fff;
+    }
+
+    #upload {
+        opacity: 0;
+    }
+
+    .input-group > .custom-select:not(:last-child), .input-group > .form-control:not(:last-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .input-group > .custom-file, .input-group > .custom-select, .input-group > .form-control, .input-group > .form-control-plaintext {
+        position: relative;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        width: 1%;
+        margin-bottom: 0;
+    }
+
+    .border-0 {
+        border: 0 !important;
+    }
+
+    .form-control {
+        display: block;
+        width: 100%;
+        height: calc(1.5em + .75rem + 2px);
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+
+    button, input {
+        overflow: visible;
+    }
+
+    button, input, optgroup, select, textarea {
+        margin: 0;
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    user agent stylesheet
+    input[type="file" i] {
+        appearance: initial;
+        background-color: initial;
+        cursor: default;
+        align-items: baseline;
+        color: inherit;
+        text-overflow: ellipsis;
+        white-space: pre;
+        text-align: start !important;
+        padding: initial;
+        border: initial;
+        overflow: hidden !important;
+    }
+
+    user agent stylesheet
+    input {
+        -webkit-writing-mode: horizontal-tb !important;
+        text-rendering: auto;
+        color: -internal-light-dark(black, white);
+        letter-spacing: normal;
+        word-spacing: normal;
+        text-transform: none;
+        text-indent: 0px;
+        text-shadow: none;
+        display: inline-block;
+        text-align: start;
+        appearance: auto;
+        background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+        -webkit-rtl-ordering: logical;
+        cursor: text;
+        margin: 0em;
+        font: 400 13.3333px Arial;
+        padding: 1px 2px;
+        border-width: 2px;
+        border-style: inset;
+        border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+        border-image: initial;
+    }
+
+    body {
+        margin: 0;
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+        background-color: #fff;
+    }
+
+    #upload-label {
+        position: absolute;
+        top: 50%;
+        left: 1rem;
+        transform: translateY(-50%);
+    }
+
+    .text-muted {
+        color: #6c757d !important;
+    }
+
+    .font-weight-light {
+        font-weight: 300 !important;
+    }
+
+    label {
+        display: inline-block;
+        margin-bottom: .5rem;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    user agent stylesheet
+    label {
+        cursor: default;
+    }
+
+    body {
+        margin: 0;
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+        background-color: #fff;
+    }
+
+
+    element.style {
+    }
+
+    .input-group-append {
+        margin-left: -1px;
+    }
+
+    .input-group-append, .input-group-prepend {
+        display: -ms-flexbox;
+        display: flex;
+    }
+    
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    user agent stylesheet
+    div {
+        display: block;
+    }
+
+    body {
+        margin: 0;
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+        background-color: #fff;
+    }
+
+    .input-group > .input-group-append > .btn, .input-group > .input-group-append > .input-group-text, .input-group > .input-group-prepend:first-child > .btn:not(:first-child), .input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child), .input-group > .input-group-prepend:not(:first-child) > .btn, .input-group > .input-group-prepend:not(:first-child) > .input-group-text {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    .input-group-append .btn, .input-group-prepend .btn {
+        position: relative;
+        z-index: 2;
+    }
+
+    .pl-4, .px-4 {
+        padding-left: 1.5rem !important;
+    }
+
+    .pr-4, .px-4 {
+        padding-right: 1.5rem !important;
+    }
+
+    .m-0 {
+        margin: 0 !important;
+    }
+
+    .rounded-pill {
+        border-radius: 50rem !important;
+    }
+
+    .btn-light {
+        color: #212529;
+        background-color: #f8f9fa;
+        border-color: #f8f9fa;
+    }
+
+    /* .btn {
+        display: inline-block;
+        font-weight: 400;
+        color: #212529;
+        text-align: center;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-color: transparent;
+        border: 1px solid transparent;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: .25rem;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }*/
+
+    label {
+        display: inline-block;
+        margin-bottom: .5rem;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    user agent stylesheet
+    label {
+        cursor: default;
+    }
+
+    body {
+        margin: 0;
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+        background-color: #fff;
+    }
+
+    .text-white {
+        color: #fff !important;
+    }
+
+    .font-italic {
+        font-style: italic !important;
+    }
+
+    .text-center {
+        text-align: center !important;
+    }
+
+    p {
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    user agent stylesheet
+    p {
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+    }
+
+    body {
+        margin: 0;
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+        background-color: #fff;
+    }
+
+    .image-area {
+        border: 2px dashed rgba(255, 255, 255, 0.7);
+        padding: 1rem;
+        position: relative;
+    }
+
+    .mt-4, .my-4 {
+        margin-top: 1.5rem !important;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    user agent stylesheet
+    div {
+        display: block;
+    }
+
+    body {
+        margin: 0;
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+        background-color: #fff;
+    }
+
+    .image-area img {
+        z-index: 2;
+        position: relative;
+    }
+
+    .ml-auto, .mx-auto {
+        margin-left: auto !important;
+    }
+
+    .mr-auto, .mx-auto {
+        margin-right: auto !important;
+    }
+
+    .shadow-sm {
+        box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important;
+    }
+
+    .d-block {
+        display: block !important;
+    }
+
+    .rounded {
+        border-radius: .25rem !important;
+    }
+
+    .img-fluid {
+        max-width: 100%;
+        height: auto;
+    }
+
+    img {
+        vertical-align: middle;
+        border-style: none;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+        background-color: #fff;
+    }
+
+    /*Ends copuing plugin here*/
+    #upload {
+        opacity: 0;
+    }
+
+    #upload-label {
+        position: absolute;
+        top: 50%;
+        left: 1rem;
+        transform: translateY(-50%);
+    }
+
+    .image-area {
+        border: 2px dashed rgba(255, 255, 255, 0.7);
+        padding: 1rem;
+        position: relative;
+    }
+
+        .image-area::before {
+            content: 'Choosen image result';
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.8rem;
+            z-index: 1;
+        }
+
+        .image-area img {
+            z-index: 2;
+            position: relative;
+        }
+
+    .buttonbackground {
+        background-color: #05eef94a !important;
+    }
+    /*
+    *
+    * ==========================================
+    * FOR DEMO PURPOSES
+    * ==========================================
+    *
+    */
+    body {
+        min-height: 100vh;
+        background-color: #757f9a;
+        background-image: linear-gradient(147deg, #757f9a 0%, #d7dde8 100%);
+    }
+
+    .form-control-upload {
+        display: block;
+        width: 100%;
+        height: calc(1.5em + .75rem + 2px);
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        /* color: #495057; */
+        /* background-color: #fff; */
+        background-clip: padding-box;
+        /* border: 1px solid #ced4da; */
+        border-radius: 10.25rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        height: 40px;
+        border: 1px solid #ddd;
+    }
+</style>
+@if (@ViewBag.imagesuccessmessage != null)
+{
+    <div class="positionfix">
+        <div class="alert alert-success alert-styled-left alert-arrow-left alert-bordered" id="divsuccessmessageaddimages">
+            @ViewBag.imagesuccessmessage
+            <button type="button" class="close"><span>×</span><span class="sr-only">Close</span></button>
+
+        </div>
+    </div>
+
+
+}
+<form asp-action="UploadImages" asp-controller="Mentor" method="post" enctype="multipart/form-data" id="imagefileupload">
+    <input type="hidden" value="" id="videohidden" />
+    <div class="hide" id="videosrchide"></div>
+    <div class="page-container">
+        <div class="page-content">
+            <div class="content-wrapper flow">
+                <div id="container">
+                    <div class="container py-5">
+
+                        <!-- For demo purpose -->
+                        <header class="text-white text-center">
+                            <h1 class="display-4">Image upload</h1>
+                            <p class="lead mb-0"> Accepted formats {png,jpg,jpeg,gif}</p>
+                            <p class="mb-5 font-weight-light">
+                            </p>
+                            <img src="https://res.cloudinary.com/mhmd/image/upload/v1564991372/image_pxlho1.svg" alt="" width="150" class="mb-4">
+                        </header>
+
+
+                        <div class="row py-4">
+                            <div class="col-lg-6 mx-auto">
+
+                                <!-- Upload image input-->
+                                <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
+                                    @Html.HiddenFor(Model => Model.MentorID, new { @id = "hiddenmentorid" })
+                                    @Html.HiddenFor(Model => Model.filetype, new { @id = "hdnfiletype" })
+                                    @Html.TextBoxFor(Model => Model.UploadFIle, "", new { @class = "form-control border-0 custom-file-input", @type = "file", @id = "upload", onchange = "readURL(this);" })
+
+                                    @*<input id="upload" type="file" onchange="readURL(this);" class="form-control border-0">*@
+                                    <label id="upload-label" for="upload" class="font-weight-light text-muted">Choose file</label>
+                                    <div class="input-group-append">
+                                        <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase text-bold text-muted">Choose file</small></label>
+                                    </div>
+                                </div>
+
+                                <!-- Uploaded image area-->
+                                <p class="font-italic text-white text-center">The choosen image will be rendered inside the box below.</p>
+
+
+                                <div class="image-area mt-4"><img id="imageResult" src="" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+
+                            </div>
+                        </div>
+                        <div class="row py-4">
+                            <div class="col-lg-4 mx-auto">
+                                @*<div class="mb-3 px-2 py-2 rounded-pill bg-white shadow-sm buttonbackground text-center mt-4">
+
+                                    </div>*@
+                                <button type="button" id="uploadimage" class="form-control-upload btn-success">UPLOAD</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+    //$(function () {
+    //    $('#upload').on('change', function () {
+    //        readURL(input);
+    //    });
+    //});
+
+
+    //var supportedTypes = ["png", "jpg", "jpeg", "gif"];
+    //var fileext = $(this).val().split(".").pop();
+    //if (!supportedTypes.includes(fileext)) {
+    //    alert("Please choos a file within specified formats");
+    //    $("#upload").val("");
+    //    $("#upload-label").html("Choose file");
+    //}
+    //else {
+    //    var fileName = $(this).val().split("\\").pop();
+    //    $(this).next('.custom-file-label').html(fileName);
+    //    if (fileName != "") {
+    //        $("#upload-label").html(fileName);
+    //    }
+    //    else {
+    //        $("#upload-label").html("Choose file");
+    //    }
+
+
+    function readURL(input) {
+        debugger
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imageResult')
+                    .attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+        else {
+            $('#imageResult')
+                .attr('src','');
+        }
+    }
+
+    /*  ==========================================
+        SHOW UPLOADED IMAGE NAME
+    * ========================================== */
+
+    var input = document.getElementById('upload');
+    var infoArea = document.getElementById('upload-label');
+
+    input.addEventListener('change', showFileName);
+    function showFileName(event) {
+        debugger
+        var input = event.srcElement;
+        if (input.files.length > 0) {
+            var fileName = input.files[0].name;
+            infoArea.textContent = 'File name: ' + fileName;
+        }
+        else {
+            infoArea.textContent = 'File name: Choose file';
+        }
+
+    }
+
+
+    $(document).ready(function () {
+        setTimeout(function () {
+            $("#divsuccessmessageaddimages").addClass('hide')
+        }, 6000)
+        $(".alert .close").on('click', function () {
+            $(this).parent('.alert').addClass('hide');
+        })
+    })
+
+    $("#uploadimage").on('click', function () {
+       //// var x = '<div></div><span><video allowfullscreen="allowfullscreen" poster="" autoplay loop="loop" playsinline="" muted controls="controls" class="video" src="<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;100&quot; viewBox=&quot;0 0 24 24&quot; style=&quot;fill: rgba(0,0,0,0.15); transform: scale(0.75)&quot;>        <path d=& quot; M8.5 13.5l2.5 3 3.5 - 4.5 4.5 6H5m16 1V5a2 2 0 0 0 - 2 - 2H5c - 1.1 0 - 2 .9 - 2 2v14c0 1.1.9 2 2 2h14c1.1 0 2 - .9 2 - 2z & quot;></path >      </svg > " style="box - sizing: border - box; "><source src="https://manerodigitalv1.pplanr.com/images/MANERO_00_7_OK.mp4" type="video/mp4" style="box-sizing: border-box;"></video></span><p></p>';
+      //  $("#videosrchide").html(x);
+        //$("#videosrchide").children('video').removeAttr('src')
+        //$("#videosrchide").children('video').removeAttr('controls')
+        //var x=$("#videosrchide").html();
+        //var z = $("#videohidden").val().removeAttr("src");
+      ////  $('#videosrchide').html(x);
+
+        //$('#videosrchide').children('video').removeAttr('src');
+      ////  $('#videosrchide video').removeAttr('src');
+       //// $('#videosrchide video').removeAttr('controls');
+
+        //$('#videosrchide').children('video').removeAttr('controls');
+
+        x = $('#videosrchide').html();
+        //var y = $("#videohidden").val(z);
+
+        //$('video source').each(function (num, val) {
+        //    $(this).attr('src', '')
+        //});
+        var ext = "";
+        if ($("#upload").val() != "") {
+            ext = $("#upload").val().split('.').pop();
+        }
+        var supportedTypes = ["png", "jpg", "jpeg", "gif"];
+        if ($("#upload").val() == "") {
+            alert("Please choose a file to upload");
+        }
+        else if (!supportedTypes.includes(ext.toLowerCase())) {
+            alert("Please choos a file within specified formats");
+            $("#upload").val("");
+            $("#upload-label").html("Choose a file");
+        }
+        else {
+            $("#imagefileupload").submit();
+        }
+
+    });
+</script>

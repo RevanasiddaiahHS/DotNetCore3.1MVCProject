@@ -1,0 +1,194 @@
+﻿@model CHANDsPAPERService.Models.HomeModel
+
+@{
+    ViewData["Title"] = "LocalFiles";
+}
+@if (@ViewBag.Lacalfilesdmessage != null)
+{
+    <div class="positionfix">
+        <div class="alert alert-success alert-styled-left alert-arrow-left alert-bordered" id="divsuccessmessageLocalFiles">
+            @ViewBag.Lacalfilesdmessage
+            <button type="button" class="close"><span>×</span><span class="sr-only">Close</span></button>
+
+        </div>
+    </div>
+
+
+}
+<style>
+    #actionli li {
+        float: left;
+        margin-left: 2px;
+        padding: 5px;
+        color: #fff;
+        font-family: trebuchet ms;
+        font-size: 19px;
+        font-weight: lighter;
+        text-align: justify;
+        word-wrap: break-word;
+    }
+
+    .font-weight-bold {
+        font-weight: 500;
+    }
+
+    .btn-link:hover, .btn-link:focus {
+        color: #166dba;
+        text-decoration: none;
+        background-color: transparent;
+    }
+</style>
+@*<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />*@
+<link href="~/css/Daterange.css" rel="stylesheet" />
+<div class="page-container salesbyproduct">
+    <div class="page-content">
+        <div class="content-wrapper flow">
+            @*@if (@TempData["SuccessMessage"] != null)
+        {
+            <div class="text-center">
+                <div class="timeoutMsg alert alert-success display-inline-block width-300">
+                    @TempData["SuccessMessage"]
+                </div>
+            </div>
+        }*@
+            <h3 class="no-margin-top">
+                Local Files
+            </h3>
+            HttpContext.Current.User.Identity.IsAuthenticated
+            @*<input type="hidden" value="" id="hdnstartdate" />
+        <input type="hidden" value="" id="hdnenddate" />*@
+            <input type="hidden" value="@Model.MentorID" id="hdnmentorid" />
+            <div class="panel panel-flat">
+                <div class="table-responsive" style="position:relative;">
+                    @*<button type="button" class="btn btn-link dashboard-ranges text-semibold" style="position: absolute;right: 13px;top: 20px;z-index: 11;">*@
+                    @*<input type="text" id="dates" class="form-control" />*@
+
+                    @*<button type="button" class="btn btn-link dashboard-ranges text-semibold" id="daterange" style="position: absolute;right: 13px;top: 20px;z-index: 11;">
+                    <i class="icon-calendar3"></i> <span></span> <b class="caret"></b>
+                </button>*@
+                    <div id="reportrange" class="btn-link" style="position: absolute;right: 13px;top: 20px;z-index: 11;cursor:pointer">
+                        <i class="icon-calendar3"></i> &nbsp;
+                        <span class="font-weight-bold"></span> <i class="caret"></i>
+                    </div>
+                    @*<div id="daterange" class="btn btn-link dashboard-ranges text-semibold">
+                    <i class="fa fa-calendar"></i>
+                    <span> </span> <b class="caret"></b>
+                </div>*@
+
+                    @*<i class="icon-calendar3 position-left"></i> <span></span> <b class="caret"></b>*@
+                    @*</button>*@
+                    <table class="table datatable-basic-product" id="localfileslist">
+                        <thead>
+                            <tr>
+                                <th>FileName</th>
+                                <th class="text-center">Uploaded date</th>
+                                <th class="text-center">Posted</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/Datatable/datatables.min.js"></script>
+    <script src="~/js/Datatable/datatable_basic.js"></script>
+
+    <script src="~/js/moment.min.js"></script>
+    <script src="~/js/Pickers/daterange.min.js"></script>
+    @*<script src="~/js/Pickers/daterangepicker.js"></script>*@
+    @*<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>*@
+    @*<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>*@
+    @*<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>*@
+    <script src="~/js/cookie.min.js"></script>
+    @*<script src="~/js/Pickers/anytime.min.js"></script>*@
+
+    <script src="~/js/Files.js" asp-append-version="true"></script>
+    <script>
+
+        //$(function () {
+        //    $('input[id="dates"]').daterangepicker({
+        //        opens: 'left'
+        //    }, function (start, end, label) {
+        //        console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+        //    });
+        //});
+
+
+
+        $(function () {
+            setTimeout(function () {
+                $("#divsuccessmessageLocalFiles").addClass('hide')
+            }, 6000)
+            $(".alert .close").on('click', function () {
+                $(this).parent('.alert').addClass('hide');
+            })
+
+            //var start = moment().subtract(29, 'days');
+            //var end = moment();
+
+            var start = Cookies.get("customrangestartdate")
+            var end = Cookies.get("customrangeenddate")
+            //alert(start);
+            //alert(end);
+            start = moment(start)
+            end = moment(end)
+            //alert(start);
+            //alert(end);
+            function cb(start, end) {
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+
+                //alert(start.format('MM/DD/YYYY'))
+                //alert(end.format('MM/DD/YYYY'))
+                //$("#hdnstartdate").val(start.format('MM/DD/YYYY'))
+                //$("#hdnenddate").val(end.format('MM/DD/YYYY'))
+                Cookies.remove("customrangestartdate");
+                Cookies.remove("customrangeenddate");
+                Cookies.set("customrangestartdate", start.format('MM/DD/YYYY'));
+                Cookies.set("customrangeenddate", end.format('MM/DD/YYYY'));
+                var datatable = $("#localfileslist").dataTable();
+                datatable.fnDestroy();
+                bindLocalfilesList();
+            }
+
+            $('#reportrange').daterangepicker({
+                startDate: start,
+                endDate: end,
+                ranges: {
+                    'Today': [moment(), moment()],
+                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                    'This Month': [moment().startOf('month'), moment().endOf('month')],
+                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                }
+            }, cb);
+
+            cb(start, end);
+
+        });
+
+        //$('input[id="dates"]').daterangepicker();
+        //$('input[class="dashboard-ranges"]').daterangepicker();
+        $(".daterangepicker opensright").on('change', function () {
+            alert($("#reportrange").text());
+        })
+
+            //var datatable = $("#localfileslist").dataTable();
+            //datatable.fnDestroy();
+            //bindLocalfilesList();
+
+            //bindLocalfilesList();
+
+
+
+    </script>
+
+
+
+}
